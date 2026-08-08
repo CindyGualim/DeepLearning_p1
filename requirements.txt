@@ -1,0 +1,10 @@
+# Versiones fijadas al entorno con el que se ejecuto el notebook (Python 3.11.9)
+numpy==2.4.6
+pandas==2.3.3
+scikit-learn==1.9.0
+scipy==1.17.1
+torch==2.13.0
+matplotlib==3.11.0
+seaborn==0.13.2
+nbformat==5.10.4
+ipykernel==7.3.0

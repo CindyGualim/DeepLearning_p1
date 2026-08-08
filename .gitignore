@@ -1,0 +1,24 @@
+# Datos generados (se reproducen con la semilla, no se versionan)
+datos/*
+!datos/.gitkeep
+
+# Figuras regeneradas por el notebook
+figuras/*
+!figuras/.gitkeep
+
+# Artefactos: SI se versionan los pesos del modelo candidato (entregable).
+# Se ignoran solo los checkpoints intermedios.
+artefactos/checkpoints/
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+*.egg-info/
+
+# Sistema
+.DS_Store
+Thumbs.db
