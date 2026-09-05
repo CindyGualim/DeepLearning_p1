@@ -1,7 +1,11 @@
 # Proyecto 1 — Monitoreo transaccional: detectar lo que el orden revela
 
 **Universidad del Valle · Deep Learning 2026 · Kevin Recinos**
-Integrantes: **Cindy Gualim** (21226) · **Gadiel Ocaña** (231270) · Entrega: 4 de septiembre de 2026
+
+Integrantes:
+**Cindy Gualim** (21226) 
+· **Gadiel Ocaña** (231270) 
+· Entrega: 4 de septiembre de 2026
 
 Entregable principal: [`proyecto1_Gualim_Ocaña.ipynb`](proyecto1_Gualim_Ocaña.ipynb) — **113 celdas,
 autocontenido**. No importa código propio: todo lo que produce un número está a la vista.
