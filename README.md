@@ -1,7 +1,11 @@
 # Proyecto 1 — Monitoreo transaccional: detectar lo que el orden revela
 
 **Universidad del Valle · Deep Learning 2026 · Kevin Recinos**
-Integrantes: **Cindy Gualim** (21226) · **Gadiel Ocaña** (231270) · Entrega: 4 de septiembre de 2026
+
+Integrantes:
+**Cindy Gualim** (21226) 
+· **Gadiel Ocaña** (231270) 
+· Entrega: 4 de septiembre de 2026
 
 Entregable principal: [`proyecto1_Gualim_Ocaña.ipynb`](proyecto1_Gualim_Ocaña.ipynb) — **113 celdas,
 autocontenido**. No importa código propio: todo lo que produce un número está a la vista.
@@ -232,87 +236,10 @@ A.
 
 ---
 
-## 4. Reproducción
-
-```bash
-git clone <repo> && cd DeepLearning_p1
-python -m venv .venv && .venv\Scripts\activate     # Windows
-pip install -r requirements.txt
-jupyter nbconvert --to notebook --execute --inplace proyecto1_Gualim_Ocaña.ipynb
-```
-
-Ejecutar el notebook completo toma **~50 minutos en CPU**. Una sola semilla, `SEED = 2026`
-(celda **3**), gobierna generación de datos, partición, inicialización de pesos y barajado de lotes.
-La celda **10** verifica con dos aserciones que la misma semilla produce la misma huella y que otra
-semilla produce una distinta.
-
-`datos/` y `figuras/` están en `.gitignore` porque se regeneran; `artefactos/` sí se versiona.
-
-**El informe y la presentación** se generan desde sus fuentes HTML:
-
-```bash
-chrome --headless=new --no-pdf-header-footer --print-to-pdf=informe.pdf file:///ruta/informe.html
-```
-
-### Versiones
-
-| componente | versión |
-|---|---|
-| python | 3.11.9 |
-| numpy | 2.4.6 |
-| pandas | 2.3.3 |
-| scikit-learn | 1.9.0 |
-| torch | 2.13.0+cpu |
-| matplotlib | 3.11.0 |
 
 ---
 
-## 5. Declaración de uso de IA
-
-Se usó **Claude Opus 5 (Claude Code)** de forma extensa: diseño del generador sintético,
-implementación de las secuencias y los controles antifuga, entrenamiento de los tres modelos, las dos
-pruebas de falsificación, el análisis económico y la redacción del notebook, el informe y este
-README. Los commits llevan `Co-Authored-By`.
-
-**Lo que verificamos nosotros** (revisar y ajustar antes de entregar):
-
-- Que los seis controles antifuga de la celda **28** son aserciones reales y que fallan si se
-  manipulan los cortes.
-- Que el control de causalidad de la celda **34** efectivamente recalcula sobre un recorte temporal.
-- Que la permutación de la celda **76** conserva los mismos eventos (la celda lo verifica con dos
-  `assert`).
-- Que el conjunto de prueba no aparece en ninguna celda anterior a la **104**.
-- Que el criterio de la apuesta (celda **91**) está en un commit anterior a su resultado.
-
-### Las tres decisiones técnicas que hay que poder defender
-
-**1. Generar sesiones legítimas como control de la escalada** (celda **9**)
-
-- *Alternativas consideradas:* no incluirlas y dejar que F1 fuera separable por agregados; o hacer
-  que los distractores tuvieran montos distintos.
-- *Evidencia que inclinó la decisión:* la celda **16** muestra que con el control los agregados por
-  episodio quedan estadísticamente iguales (suma 1302 vs 1327, máximo 1203 vs 1225, comercios 5.03 vs
-  5.03) y solo difiere la monotonía (99.7 % vs 0 %). Sin ese control, cualquier ventaja del modelo
-  secuencial sería atribuible al monto y no al orden.
-
-**2. Elegir árboles sobre regresión logística para la línea base** (celda **43**)
-
-- *Alternativas consideradas:* solo logística (más interpretable, más cercana a un motor de reglas);
-  solo árboles sin justificar.
-- *Evidencia:* la rejilla completa da **0.9171 contra 0.5189**. Las variables útiles son razones y
-  conteos con efecto de umbral y un modelo lineal no puede representar ese salto. Importaba que A
-  fuera **fuerte**: una línea base débil habría hecho lucir bien a B por la razón equivocada.
-
-**3. Controlar la apuesta C con las agregadas en ceros, no contra B** (celda **93**)
-
-- *Alternativas consideradas:* comparar el híbrido directamente contra B, que es lo intuitivo.
-- *Evidencia:* contra B la mejora aparente es **+0.0198**; contra el control es **+0.0094**. La
-  diferencia la aporta la cabeza MLP, no las agregadas. El control aísla la variable de interés
-  porque comparte arquitectura, parámetros, semilla, épocas y criterio de parada.
-
----
-
-## 6. Candidato al Proyecto Final
+##  Candidato al Proyecto Final
 
 **Modelo que conservaríamos: C (híbrido).** Artefacto en **`artefactos/modelo_c.pt`** (262 KB), con
 `state_dict`, arquitectura, dimensiones y umbral de validación. Se acompaña de
