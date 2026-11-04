@@ -22,3 +22,16 @@ env/
 # Sistema
 .DS_Store
 Thumbs.db
+
+# Registro de uso: la base SQLite es estado de ejecucion y cambia en cada arranque.
+# Lo que se versiona como evidencia es el volcado (scripts/exportar_registros.py).
+datos_demo/registro.db
+
+# Entorno local del servicio
+.pytest_cache/
+
+# Capturas del servicio en produccion: SI se versionan, son evidencia de la rubrica.
+# (Hay que reincluir el directorio antes que su contenido: `figuras/*` impide que git
+#  descienda a el.)
+!figuras/evidencias/
+!figuras/evidencias/**
