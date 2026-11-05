@@ -1,0 +1,304 @@
+{
+ "generado": "2026-11-08T20:54:35+00:00",
+ "costos": {
+  "FN": 4200,
+  "FP": 180
+ },
+ "particiones": {
+  "val": {
+   "secuencias": 59495,
+   "fraudes": 660,
+   "prevalencia": 0.01109,
+   "modelos": {
+    "A": {
+     "auc_pr": 0.9171,
+     "umbral": 0.1217,
+     "precision": 0.567,
+     "exhaustividad": 0.9879,
+     "f1": 0.7204,
+     "alertas": 1150,
+     "vp": 652,
+     "fp": 498,
+     "fn": 8,
+     "costo_Q": 123240
+    },
+    "B": {
+     "auc_pr": 0.9226,
+     "umbral": 0.3776,
+     "precision": 0.5863,
+     "exhaustividad": 0.9833,
+     "f1": 0.7346,
+     "alertas": 1107,
+     "vp": 649,
+     "fp": 458,
+     "fn": 11,
+     "costo_Q": 128640
+    },
+    "C": {
+     "auc_pr": 0.9424,
+     "umbral": 0.2263,
+     "precision": 0.6189,
+     "exhaustividad": 0.9939,
+     "f1": 0.7628,
+     "alertas": 1060,
+     "vp": 656,
+     "fp": 404,
+     "fn": 4,
+     "costo_Q": 89520
+    }
+   },
+   "por_mecanismo": [
+    {
+     "mecanismo": "F1_escalada",
+     "positivos": 309,
+     "A": 0.7355,
+     "B": 0.7806,
+     "C": 0.8347
+    },
+    {
+     "mecanismo": "F2_rafaga",
+     "positivos": 209,
+     "A": 0.9494,
+     "B": 0.9489,
+     "C": 0.9614
+    },
+    {
+     "mecanismo": "F3_atipico",
+     "positivos": 142,
+     "A": 0.7541,
+     "B": 0.754,
+     "C": 0.8049
+    }
+   ]
+  },
+  "test": {
+   "secuencias": 59410,
+   "fraudes": 644,
+   "prevalencia": 0.01084,
+   "modelos": {
+    "A": {
+     "auc_pr": 0.9092,
+     "umbral": 0.1217,
+     "precision": 0.5972,
+     "exhaustividad": 0.9876,
+     "f1": 0.7443,
+     "alertas": 1065,
+     "vp": 636,
+     "fp": 429,
+     "fn": 8,
+     "costo_Q": 110820
+    },
+    "B": {
+     "auc_pr": 0.9206,
+     "umbral": 0.3776,
+     "precision": 0.6013,
+     "exhaustividad": 0.9814,
+     "f1": 0.7457,
+     "alertas": 1051,
+     "vp": 632,
+     "fp": 419,
+     "fn": 12,
+     "costo_Q": 125820
+    },
+    "C": {
+     "auc_pr": 0.9361,
+     "umbral": 0.2263,
+     "precision": 0.624,
+     "exhaustividad": 0.9767,
+     "f1": 0.7615,
+     "alertas": 1008,
+     "vp": 629,
+     "fp": 379,
+     "fn": 15,
+     "costo_Q": 131220
+    }
+   },
+   "por_mecanismo": [
+    {
+     "mecanismo": "F1_escalada",
+     "positivos": 309,
+     "A": 0.7487,
+     "B": 0.771,
+     "C": 0.816
+    },
+    {
+     "mecanismo": "F2_rafaga",
+     "positivos": 201,
+     "A": 0.9396,
+     "B": 0.9483,
+     "C": 0.9649
+    },
+    {
+     "mecanismo": "F3_atipico",
+     "positivos": 134,
+     "A": 0.7387,
+     "B": 0.7261,
+     "C": 0.7813
+    }
+   ]
+  }
+ },
+ "permutacion": {
+  "tabla": [
+   {
+    "variante": "orden real",
+    "auc_pr": 0.9206,
+    "desviacion": 0.0,
+    "caida": 0.0,
+    "caida_pct": 0.0
+   },
+   {
+    "variante": "historia barajada",
+    "auc_pr": 0.6676,
+    "desviacion": 0.0037,
+    "caida": 0.2529,
+    "caida_pct": 27.5
+   },
+   {
+    "variante": "secuencia completa",
+    "auc_pr": 0.045,
+    "desviacion": 0.0026,
+    "caida": 0.8756,
+    "caida_pct": 95.1
+   }
+  ],
+  "por_mecanismo": [
+   {
+    "mecanismo": "F1_escalada",
+    "positivos": 309,
+    "B_real": 0.771,
+    "B_permutado": 0.3149
+   },
+   {
+    "mecanismo": "F2_rafaga",
+    "positivos": 201,
+    "B_real": 0.9483,
+    "B_permutado": 0.4634
+   },
+   {
+    "mecanismo": "F3_atipico",
+    "positivos": 134,
+    "B_real": 0.7261,
+    "B_permutado": 0.7773
+   }
+  ],
+  "semillas": 5
+ },
+ "recorte": [
+  {
+   "k": 1,
+   "auc_pr": 0.6166,
+   "F1_escalada": 0.293,
+   "F2_rafaga": 0.2787,
+   "F3_atipico": 0.7551
+  },
+  {
+   "k": 2,
+   "auc_pr": 0.7658,
+   "F1_escalada": 0.4029,
+   "F2_rafaga": 0.7574,
+   "F3_atipico": 0.8113
+  },
+  {
+   "k": 3,
+   "auc_pr": 0.844,
+   "F1_escalada": 0.5514,
+   "F2_rafaga": 0.924,
+   "F3_atipico": 0.7721
+  },
+  {
+   "k": 4,
+   "auc_pr": 0.9001,
+   "F1_escalada": 0.6986,
+   "F2_rafaga": 0.9487,
+   "F3_atipico": 0.7569
+  },
+  {
+   "k": 6,
+   "auc_pr": 0.9263,
+   "F1_escalada": 0.7972,
+   "F2_rafaga": 0.9495,
+   "F3_atipico": 0.7382
+  },
+  {
+   "k": 8,
+   "auc_pr": 0.9243,
+   "F1_escalada": 0.7868,
+   "F2_rafaga": 0.949,
+   "F3_atipico": 0.7406
+  },
+  {
+   "k": 12,
+   "auc_pr": 0.9222,
+   "F1_escalada": 0.777,
+   "F2_rafaga": 0.9499,
+   "F3_atipico": 0.7321
+  },
+  {
+   "k": 16,
+   "auc_pr": 0.9214,
+   "F1_escalada": 0.7734,
+   "F2_rafaga": 0.9502,
+   "F3_atipico": 0.7324
+  },
+  {
+   "k": 20,
+   "auc_pr": 0.9206,
+   "F1_escalada": 0.771,
+   "F2_rafaga": 0.9483,
+   "F3_atipico": 0.7261
+  }
+ ],
+ "sensibilidad": [
+  {
+   "costo_fn": 1500,
+   "A": 98460,
+   "umbral_A": 0.4002,
+   "B": 82740,
+   "umbral_B": 0.6142,
+   "C": 91500,
+   "umbral_C": 0.4608,
+   "mejor": "B"
+  },
+  {
+   "costo_fn": 2500,
+   "A": 124900,
+   "umbral_A": 0.3755,
+   "B": 105420,
+   "umbral_B": 0.3776,
+   "C": 116500,
+   "umbral_C": 0.4608,
+   "mejor": "B"
+  },
+  {
+   "costo_fn": 4200,
+   "A": 110820,
+   "umbral_A": 0.1217,
+   "B": 125820,
+   "umbral_B": 0.3776,
+   "C": 131220,
+   "umbral_C": 0.2263,
+   "mejor": "A"
+  },
+  {
+   "costo_fn": 6000,
+   "A": 120180,
+   "umbral_A": 0.0606,
+   "B": 153840,
+   "umbral_B": 0.27,
+   "C": 158220,
+   "umbral_C": 0.2263,
+   "mejor": "A"
+  },
+  {
+   "costo_fn": 9000,
+   "A": 135180,
+   "umbral_A": 0.0606,
+   "B": 186840,
+   "umbral_B": 0.27,
+   "C": 197100,
+   "umbral_C": 0.1337,
+   "mejor": "A"
+  }
+ ]
+}
