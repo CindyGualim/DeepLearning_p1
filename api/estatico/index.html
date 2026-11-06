@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Centinela — Monitoreo transaccional</title>
+<link rel="stylesheet" href="/estatico/estilos.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🛡️</text></svg>">
+</head>
+<body>
+
+<header>
+  <div class="marca">
+    <h1>Centinela</h1>
+    <span class="sub">monitoreo transaccional · modelo del Proyecto&nbsp;1 en producción</span>
+  </div>
+  <nav role="tablist">
+    <button role="tab" data-vista="cola" aria-current="true">Cola de revisión</button>
+    <button role="tab" data-vista="evidencias">Evidencias</button>
+    <button role="tab" data-vista="monitoreo">Monitoreo</button>
+    <button role="tab" data-vista="api">API</button>
+  </nav>
+  <button class="tema" id="btn-tema" title="Cambiar tema" aria-label="Cambiar tema">◐</button>
+</header>
+
+<main>
+
+  <!-- ============ COLA ============ -->
+  <section class="vista activa" id="vista-cola">
+    <p class="nota">
+      Cada fila es una transacción que acaba de ocurrir. La cola está ordenada por el puntaje del
+      modelo <strong>C</strong>, que prioriza; la decisión de alertar la toma el modelo <strong>A</strong>,
+      que es la incumbente. Los casos salen de la <strong>partición de prueba</strong>: ningún modelo
+      los vio al entrenar ni al elegir su umbral. El mecanismo real de cada caso lo retiene el
+      servidor hasta que usted emite un veredicto.
+    </p>
+
+    <div class="split">
+      <div class="panel">
+        <h2>
+          Cola
+          <span class="controles-cola">
+            <label for="sel-orden">ordenar por</label>
+            <select id="sel-orden">
+              <option value="C" selected>modelo C (prioriza)</option>
+              <option value="A">modelo A (decide)</option>
+              <option value="B">modelo B</option>
+            </select>
+          </span>
+        </h2>
+        <div class="cuerpo sin-aire">
+          <div class="cola" id="cola" role="listbox" aria-label="Cola de casos"></div>
+        </div>
+      </div>
+
+      <div id="detalle">
+        <div class="panel"><div class="vacio">Seleccione un caso de la cola.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EVIDENCIAS ============ -->
+  <section class="vista" id="vista-evidencias">
+    <p class="nota">
+      Las tablas del informe del Proyecto 1, recalculadas por este mismo servicio sobre la partición
+      de prueba. No son capturas: salen de <code>/evidencias</code>, y las produjo
+      <code>scripts/construir_banco.py</code> con los artefactos que el servicio tiene cargados.
+    </p>
+    <div id="evidencias"><div class="panel"><div class="vacio">Cargando…</div></div></div>
+  </section>
+
+  <!-- ============ MONITOREO ============ -->
+  <section class="vista" id="vista-monitoreo">
+    <p class="nota">
+      Registro de uso real del servicio. Cada puntuación y cada veredicto quedan escritos en SQLite
+      (<code>datos_demo/registro.db</code>) y se leen desde <code>/registros</code>. Esta pestaña es
+      la evidencia de que el servicio se usó, no solo de que existe.
+    </p>
+    <div class="acciones" style="margin-bottom:12px">
+      <button class="btn" id="btn-refrescar">Refrescar</button>
+    </div>
+    <div id="monitoreo"><div class="panel"><div class="vacio">Cargando…</div></div></div>
+  </section>
+
+  <!-- ============ API ============ -->
+  <section class="vista" id="vista-api">
+    <p class="nota">
+      El servicio es una API pública: cualquiera puede puntuar una tarjeta sin pasar por esta consola.
+      La documentación interactiva generada por FastAPI está en
+      <a href="/docs" target="_blank" rel="noopener">/docs</a>.
+    </p>
+    <div class="rejilla-2">
+      <div class="panel">
+        <h2>Contrato de <code>/puntuar</code></h2>
+        <div class="cuerpo">
+          <p class="nota">
+            <strong>Entrada:</strong> la historia de una tarjeta ordenada por timestamp, con al menos
+            4 transacciones (3 previas más la actual). Se puntúa la última.
+            <strong>Salida:</strong> un puntaje continuo en [0,1] por modelo, la decisión operativa
+            y la latencia.
+          </p>
+          <pre id="ejemplo-curl">cargando…</pre>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Ficha del modelo servido</h2>
+        <div class="cuerpo" id="ficha"><div class="vacio">Cargando…</div></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<p class="pie" id="pie">—</p>
+
+<script src="/estatico/consola.js"></script>
+</body>
+</html>
