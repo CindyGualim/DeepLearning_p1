@@ -1,0 +1,15 @@
+# Dependencias para SERVIR el modelo. Son un subconjunto de requirements.txt (que
+# ademas trae lo necesario para entrenar y graficar en el notebook).
+#
+# torch se toma del indice de CPU: la rueda con CUDA pesa ~2.5 GB y el servicio
+# puntua una tarjeta a la vez en milisegundos.
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+numpy==2.4.6
+pandas==3.0.5
+scikit-learn==1.9.0
+scipy==1.17.1
+torch==2.13.0
+joblib==1.5.3
+fastapi==0.162.2
+uvicorn==0.52.4
