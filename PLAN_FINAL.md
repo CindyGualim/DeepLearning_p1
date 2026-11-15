@@ -52,7 +52,7 @@ el puntaje según la problemática del Proyecto 1.
 | 10 | Empaque para despliegue | dom 8 nov | Gadiel | `Dockerfile`, `requisitos-servicio.txt` | hecho |
 | 11 | Verificación de uso y exportación del registro | dom 8 nov | Cindy | `datos_demo/registro_uso.jsonl` | hecho |
 | 12 | README como documento técnico (7 secciones) | dom 8 nov | ambos | `README.md` | hecho |
-| 13 | Despliegue público y captura de evidencias | dom 8 nov | Cindy | enlace al servicio | **pendiente** |
+| 13 | Despliegue público y captura de evidencias | dom 8 nov → dom 15 nov | Cindy | <https://deeplearning-p1.onrender.com> | hecho el 15 nov (Render; Hugging Face exigía PRO para Docker) |
 | 14 | Presentación (10 min) | dom 8 nov | ambos | `presentacion_final.pdf` | **pendiente** |
 | 15 | Ensayo cronometrado y reparto de preguntas | dom 8 nov, noche | ambos | — | **pendiente** |
 
