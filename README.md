@@ -14,7 +14,7 @@ Modelo base: el **Proyecto 1** de este mismo equipo
 ([informe](informe_Gualim_Ocana.pdf) · [README original](README_proyecto1.md) ·
 [notebook](proyecto1_Gualim_Ocaña.ipynb)). No se reentrenó: se puso a servir.
 
-**Presentación del proyecto final:** [`presentacion_final.pdf`](presentacion_final.pdf) (11 diapositivas).
+**Presentación del proyecto final:** [`presentacion_final.pdf`](presentacion_final.pdf) 
 
 ---
 
