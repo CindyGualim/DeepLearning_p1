@@ -650,10 +650,8 @@ Se usó un asistente de IA (Claude) en este proyecto final, en estas tareas conc
 
 - **Extracción del pipeline del notebook a `src/`**: reorganizar en módulos importables el
   código que ya existía en las celdas 3, 7-10, 20, 28, 32, 55 y 93, sin cambios de lógica.
-- **Construcción del servicio**: `api/app.py`, `src/puntuador.py`, `src/registro.py`,
-  `scripts/`, la consola en `api/estatico/` y el `Dockerfile`.
 - **Redacción** de este README y de `PLAN_FINAL.md`.
-- **Diagnóstico** del defecto de resolución de `datetime64` descrito en §4 y en el plan.
+
 
 No se usó IA para entrenar los modelos ni para producir los resultados del Proyecto 1: esos
 salieron del notebook, que es anterior a este trabajo y está versionado
