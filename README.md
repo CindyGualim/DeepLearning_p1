@@ -14,6 +14,8 @@ Modelo base: el **Proyecto 1** de este mismo equipo
 ([informe](informe_Gualim_Ocana.pdf) · [README original](README_proyecto1.md) ·
 [notebook](proyecto1_Gualim_Ocaña.ipynb)). No se reentrenó: se puso a servir.
 
+**Presentación del proyecto final:** [`presentacion_final.pdf`](presentacion_final.pdf) (11 diapositivas).
+
 ---
 
 ## Resumen en una página
@@ -615,7 +617,9 @@ Dockerfile                 imagen del servicio (puerto 7860)
 
 proyecto1_Gualim_Ocaña.ipynb   el notebook original, intacto
 README_proyecto1.md            el documento técnico del Proyecto 1
+presentacion_final.pdf         la presentación de este proyecto final
 informe_Gualim_Ocana.pdf       el informe del Proyecto 1
+presentacion.pdf               la presentación del Proyecto 1
 PLAN_FINAL.md                  etapas, fechas, responsables, riesgos
 ```
 
