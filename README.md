@@ -42,7 +42,7 @@ Esa asimetría es la evidencia central del Proyecto 1, y aquí se puede tocar en
 | Latencia de puntuar una tarjeta | **39 ms** (p50) · 44 ms (p95) en local · 84–174 ms en Render (0.1 CPU) |
 | Arranque del servicio | 6.4 s en local · 34.4 s en Render |
 | Pruebas | **51**, todas en verde |
-| Registro de uso | 203 peticiones ([volcado](datos_demo/registro_uso.jsonl)) |
+| Registro de uso | 203 peticiones en local ([volcado](datos_demo/registro_uso.jsonl)) · 13 en Render ([volcado](datos_demo/registro_render.json)) |
 
 ---
 
@@ -466,6 +466,23 @@ resumen: [`datos_demo/registro_resumen.json`](datos_demo/registro_resumen.json).
 El registro se escribe solo, en cada petición, desde `src/registro.py`. Se regenera con
 `python scripts/exportar_registros.py`.
 
+**Sesión sobre el servicio público (Render)**, 15 de noviembre, 23:51 → 00:16 UTC, usando la
+consola en <https://deeplearning-p1.onrender.com>:
+
+| | |
+|---|---|
+| Peticiones registradas | **13** (10 `normal` · 3 `permutar`) |
+| Latencia p50 / p95 | 208.5 ms / 399.48 ms |
+| Alertas emitidas | 13 |
+
+La latencia es mayor que en local por dos razones: la instancia gratuita tiene 0.1 CPU, y las
+peticiones de la consola (`/casos/{id}`) puntúan además la trayectoria completa de 20 eventos, no
+solo la última transacción. Una llamada directa a `POST /puntuar` tardó 84–174 ms (§7.1).
+
+Volcado: [`datos_demo/registro_render.json`](datos_demo/registro_render.json), descargado de
+[`/registros`](https://deeplearning-p1.onrender.com/registros). Render no da disco persistente en
+el plan gratuito, así que este archivo es la copia que sobrevive a los redeploys.
+
 ### 7.5 Resultado de la hipótesis de §5.3, medido sobre el servicio
 
 ```
@@ -477,10 +494,33 @@ caída máxima de B       : +0.9589
 
 ### 7.6 Capturas
 
-> **Pendiente.** Tomar con el servicio corriendo y guardarlas en
-> [`figuras/evidencias/`](figuras/evidencias/), que tiene la lista exacta de las seis capturas
-> que conviene incluir y para qué sirve cada una. La más importante es el caso **C082** antes y
-> después de barajar: B pasa de 1.000 a 0.041 y A se queda clavado en 0.960.
+Tomadas el 15 de noviembre contra el servicio público en Render.
+
+**La evidencia central: el caso C082 antes y después de barajar su historia.** Es una escalada
+(F1). Con el orden real, los tres modelos alertan. Al barajar, B cae de 1.000 a 0.133 y C de
+1.000 a 0.110, mientras **A se queda en 0.960**: es ciego al orden, como predice la hipótesis de
+§5.3.
+
+| Orden real | Historia barajada (semilla 8773) |
+|---|---|
+| ![Caso C082 con el orden real: A 0.960, B 1.000, C 1.000](figuras/evidencias/02_caso_normal.png) | ![Caso C082 barajado: A 0.960, B 0.133, C 0.110](figuras/evidencias/03_caso_barajado.png) |
+
+**Cola de revisión priorizada por el modelo C**
+
+![Cola de revisión ordenada por el modelo C](figuras/evidencias/01_cola.png)
+
+**Evidencias del Proyecto 1, recalculadas por el servicio**: permutación con el control F3,
+recorte de la historia, desempeño por mecanismo, decisión económica y paridad con el notebook.
+
+![Pestaña de evidencias](figuras/evidencias/04_evidencias.png)
+
+**Monitoreo: el registro de uso real del servicio público** (§7.4)
+
+![Pestaña de monitoreo con peticiones y latencias](figuras/evidencias/05_monitoreo.png)
+
+**API interactiva en `/docs`**: un tercero puede llamar al modelo sin usar la consola.
+
+![Documentación interactiva de la API](figuras/evidencias/06_docs.png)
 
 ---
 
